@@ -125,7 +125,7 @@ class SmartHome(val smartTvDevice: SmartTvDevice, val smartLightDevice: SmartLig
         // Turn on and turn off
         fun turnOnLight() {
             deviceTurnOnCount++
-            smartLightDevice.turnOn() // we are not using the SmartDevices's
+            smartLightDevice.turnOn() //we are not using the SmartDevices's
         }
 
         fun turnOffLight() {
