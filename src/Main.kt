@@ -2,6 +2,11 @@
 open class SmartDevice(val name: String, val category: String) {
 
     var deviceStatus = "online"
+        protected set /*property must be readable outside the
+        class through class objects. However, only the class
+        and its children should be able to update or write
+        the value.*/
+
     open val deviceType = "unknown"
 
     open fun turnOn() {
@@ -90,17 +95,19 @@ class SmartLightDevice(deviceName: String, deviceCategory: String)
 }
 
 // Smart Home
-class SmartHome(
-    val smartTvDevice: SmartTvDevice,
-    val smartLightDevice: SmartLightDevice
-) {
+class SmartHome(val smartTvDevice: SmartTvDevice, val smartLightDevice: SmartLightDevice) {
+
+    var deviceTurnOnCount = 0
+        private set
 
     // TV functions
         // Turn on and turn off
         fun turnOnTv() {
+            deviceTurnOnCount++
             smartTvDevice.turnOn() // We are using the SmartDevices's functions, because SmartTvDevies inherits this.
         }
         fun turnOffTv() {
+            deviceTurnOnCount--
             smartTvDevice.turnOff()
         }
 
@@ -117,10 +124,12 @@ class SmartHome(
     // Light functions
         // Turn on and turn off
         fun turnOnLight() {
+            deviceTurnOnCount++
             smartLightDevice.turnOn() // we are not using the SmartDevices's
         }
 
         fun turnOffLight() {
+            deviceTurnOnCount--
             smartLightDevice.turnOff()
         }
 
