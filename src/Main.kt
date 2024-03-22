@@ -104,7 +104,7 @@ class SmartHome(val smartTvDevice: SmartTvDevice, val smartLightDevice: SmartLig
         // Turn on and turn off
         fun turnOnTv() {
             deviceTurnOnCount++
-            smartTvDevice.turnOn() // We are using the SmartDevices's functions, because SmartTvDevies inherits this.
+            smartTvDevice.turnOn() //We are using the SmartDevices's functions, because SmartTvDevies inherits this.
         }
         fun turnOffTv() {
             deviceTurnOnCount--
